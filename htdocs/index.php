@@ -48,6 +48,15 @@ if (defined('ENVIRONMENT'))
 
 /*
  *---------------------------------------------------------------
+ * HOME - Location of CF app
+ *---------------------------------------------------------------
+ *
+ * This is the location of the application on CF.com
+ */
+    $cf_home = getenv('HOME');
+
+/*
+ *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
  *---------------------------------------------------------------
  *
@@ -56,8 +65,8 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = $ENV['HOME'] . '/ci/system';
-
+	$system_path = $cf_home . '/ci/system';
+    
 /*
  *---------------------------------------------------------------
  * APPLICATION FOLDER NAME
@@ -72,7 +81,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = $ENV['HOME'] . '/ci/application';
+	$application_folder = $cf_home . '/ci/application';
 
 /*
  * --------------------------------------------------------------------
