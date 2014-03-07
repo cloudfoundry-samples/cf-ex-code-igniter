@@ -54,7 +54,6 @@ if (defined('ENVIRONMENT'))
  * This is the location of the application on CF.com
  */
     $cf_home = getenv('HOME');
-
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
@@ -65,8 +64,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = $cf_home . '/system';
-    
+	$system_path = $cf_home . '/code-igniter/system';
 /*
  *---------------------------------------------------------------
  * APPLICATION FOLDER NAME
@@ -81,8 +79,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = $cf_home . '/application';
-
+	$application_folder = $cf_home . '/code-igniter/application';
 /*
  * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
