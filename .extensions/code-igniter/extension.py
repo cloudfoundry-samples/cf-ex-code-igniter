@@ -2,7 +2,9 @@
 
 Downloads, installs and configures Code Igniter
 """
+import os
 import logging
+from build_pack_utils import utils
 
 
 _log = logging.getLogger('codeigniter')
@@ -13,7 +15,7 @@ DEFAULTS = utils.FormattedDict({
     'CODEIGNITER_PACKAGE': 'CodeIgniter_{CODEIGNITER_VERSION}.zip',
     'CODEIGNITER_HASH': '28abc67cfec406c74cb8c64499f1fafb92c6840e',
     'CODEIGNITER_URL': 'http://ellislab.com/asset/ci_download_files'
-                       '/CodeIgniter_2.1.3.zip'
+                       '/CodeIgniter_{CODEIGNITER_VERSION}.zip'
 })
 
 
@@ -39,24 +41,25 @@ def compile(install):
         DEFAULTS['CODEIGNITER_URL'],
         DEFAULTS['CODEIGNITER_HASH'],
         workDir,
-        fileName=DEFAULTS['CODEIGNITER_PACKAGE'],
-        strip=True)
+        fileName=DEFAULTS['CODEIGNITER_PACKAGE'])
     (install.builder
         .move()
         .everything()
-        .under(os.path.join(workDir, 'system'))
-        .into('BUILD_DIR')
-        .done())
-    (install.builder
-        .move()
-        .everything()
-        .under(os.path.join(workDir, 'application'))
-        .into('BUILD_DIR')
-        .done())
-    (install.builder
-        .move()
-        .where_name_is('index.php')
+        .where_name_matches('^%s.*$' % os.path.join(workDir, 'system'))
         .under(workDir)
-        .into('{BUILD_DIR}/htdocs')
+        .into('{BUILD_DIR}/code-igniter')
         .done())
+    (install.builder
+        .move()
+        .everything()
+        .where_name_matches('^%s.*$' % os.path.join(workDir, 'application'))
+        .under(workDir)
+        .into('{BUILD_DIR}/code-igniter')
+        .done())
+    userAppFolder = os.path.join(ctx['BUILD_DIR'], 'htdocs', 'application')
+    (install.builder
+        .move()
+        .everything()
+        .where_name_matches('^%s.*$' % userAppFolder)
+        .under('{BUILD_DIR}/application'))
     return 0
