@@ -65,7 +65,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = $cf_home . '/ci/system';
+	$system_path = $cf_home . '/system';
     
 /*
  *---------------------------------------------------------------
@@ -81,7 +81,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = $cf_home . '/ci/application';
+	$application_folder = $cf_home . '/application';
 
 /*
  * --------------------------------------------------------------------
