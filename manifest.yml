@@ -1,9 +1,11 @@
 ---
 applications:
-- name: code-igniter
+- name: code-igniter-demo
   memory: 128M
   instances: 1
-  host: code-igniter-${random-word}
+  host: code-igniter-demo
   domain: cfapps.io
   path: .
-  buildpack: https://github.com/dmikusa-pivotal/cf-php-apache-buildpack.git
+  buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
+  env:
+    BP_DEBUG: True
