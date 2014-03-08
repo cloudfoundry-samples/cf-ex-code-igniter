@@ -2,8 +2,9 @@
 class pages extends CI_Controller {
     public function view($page = 'home')
     {
-        if (! file_exists('application/views/pages' . $page . '.php'))
+        if (! file_exists('/app/codeigniter/application/views/pages/' . $page . '.php'))
         {
+            print("not found");
             show_404();
         }
 
