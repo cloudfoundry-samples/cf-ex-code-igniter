@@ -64,7 +64,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = $cf_home . '/code-igniter/system';
+	$system_path = $cf_home . '/codeigniter/system';
 /*
  *---------------------------------------------------------------
  * APPLICATION FOLDER NAME
@@ -79,7 +79,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = $cf_home . '/code-igniter/application';
+	$application_folder = $cf_home . '/codeigniter/application';
 /*
  * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
