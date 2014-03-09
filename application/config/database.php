@@ -53,13 +53,14 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = $service['credentials']['hostname'];
+$db['default']['port'] = $service['credentials']['port'];
 $db['default']['username'] = $service['credentials']['username'];
 $db['default']['password'] = $service['credentials']['password'];
 $db['default']['database'] = $service['credentials']['name'];
 $db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = 'CI';
+$db['default']['dbprefix'] = 'CI_';
 $db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = FALSE;
+$db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
 $db['default']['char_set'] = 'utf8';
