@@ -1,2 +1,2 @@
 <h1>Success</h1>
-<p><a href="news/<?php echo $news_item ?>">View article</a></p>
+<p><a href="/news">View articles</a></p>
