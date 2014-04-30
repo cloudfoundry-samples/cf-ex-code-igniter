@@ -4,10 +4,9 @@ applications:
   memory: 128M
   instances: 1
   host: code-igniter-demo
-  domain: cfapps.io
   path: .
   buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
   services:
   - mysql-db
   env:
-    BP_DEBUG: True
+    BP_DEBUG: "True"
