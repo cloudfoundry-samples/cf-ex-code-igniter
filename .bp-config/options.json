@@ -1,0 +1,5 @@
+{
+    "PHP_MODULES": ["cli"],
+    "PHP_EXTENSIONS": ["mysqli"],
+    "ADDITIONAL_PREPROCESS_CMDS": ["php htdocs/index.php migrations"]
+}
