@@ -11,11 +11,10 @@ _log = logging.getLogger('codeigniter')
 
 
 DEFAULTS = utils.FormattedDict({
-    'CODEIGNITER_VERSION': '2.1.4',
-    'CODEIGNITER_PACKAGE': 'CodeIgniter_{CODEIGNITER_VERSION}.zip',
-    'CODEIGNITER_HASH': '28abc67cfec406c74cb8c64499f1fafb92c6840e',
-    'CODEIGNITER_URL': 'http://ellislab.com/asset/ci_download_files'
-                       '/CodeIgniter_{CODEIGNITER_VERSION}.zip'
+    'CODEIGNITER_VERSION': '2.2',
+    'CODEIGNITER_PACKAGE': '{CODEIGNITER_VERSION}-stable.zip',
+    'CODEIGNITER_HASH': 'd51c969431505ec75d70a5d79a22516ccc46202a',
+    'CODEIGNITER_URL': 'https://github.com/bcit-ci/CodeIgniter/archive/2.2-stable.zip'
 })
 
 
