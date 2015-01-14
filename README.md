@@ -19,19 +19,6 @@ This is the [CodeIgniter Tutorial] application and it demonstrates push a CodeIg
   cf create-service cleardb spark my-test-mysql-db
   ```
 
-1. Connect to the database using an SQL tool like the [MySQL client] or [PHPMyAdmin].  Run the following statement to create the required database table.
-
-  ```sql
-  CREATE TABLE news (
-	  id int(11) NOT NULL AUTO_INCREMENT,
-	  title varchar(128) NOT NULL,
-	  slug varchar(128) NOT NULL,
-	  text text NOT NULL,
-	  PRIMARY KEY (id),
-	  KEY slug (slug)
-  );
-  ```
-
 1. Edit the manifest.yml file.  Change the 'host' attribute to something unique.  Then under "services:" change "mysql-db" to the name of your MySQL service.  This is the name of the service that will be bound to your application and thus available to PHPMyAdmin.
 
 1. Push it to CloudFoundry.
