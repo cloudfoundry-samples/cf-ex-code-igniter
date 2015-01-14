@@ -29,6 +29,19 @@ This is the [CodeIgniter Tutorial] application and it demonstrates push a CodeIg
 
   Access your application URL in the browser.  You should see the main page and be able to navigate the links.  The news section is pulled from the database.  Initially it'll be empty, but you can create some news entries with the create page.
 
+### Database Details
+
+Previously with this example, it was necessary to create the database manually.  Now this happens automatically when you push the application.  Here's how this works.
+
+1. The app is pushed & stages.
+1. Your MySQL service is bound to the app.
+1. The app droplet is run.
+1. The db migration scripts execute.
+1. The app itself starts.
+
+The migration scripts use the technique described [here](http://zacharyflower.com/2013/08/12/getting-started-with-codeigniter-migrations/).
+
+
 
 [CodeIgniter Tutorial]:http://ellislab.com/codeigniter/user-guide/tutorial/index.html
 [PHP Build Pack]:https://github.com/dmikusa-pivotal/cf-php-build-pack
