@@ -37,11 +37,14 @@ def compile(install):
     inst = install._installer
     ciDir = 'codeigniter'
     workDir = os.path.join(ctx['TMPDIR'], ciDir)
+    if not os.path.exists(workDir):
+        os.makedirs(workDir)
     inst.install_binary_direct(
         DEFAULTS['CODEIGNITER_URL'],
         DEFAULTS['CODEIGNITER_HASH'],
         workDir,
-        fileName=DEFAULTS['CODEIGNITER_PACKAGE'])
+        fileName=DEFAULTS['CODEIGNITER_PACKAGE'],
+        strip=True)
     (install.builder
         .move()
         .everything()
