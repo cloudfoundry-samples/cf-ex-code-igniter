@@ -7,6 +7,6 @@ applications:
   path: .
   buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
   services:
-  - mysql-db
+  - my-test-mysql-db
   env:
     BP_DEBUG: "True"
