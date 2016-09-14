@@ -53,7 +53,7 @@ if (defined('ENVIRONMENT'))
  *
  * This is the location of the application on CF.com
  */
-    $cf_home = getenv('HOME');
+    $cf_home = getenv('HOME') . '/app';
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
