@@ -11,9 +11,9 @@ _log = logging.getLogger('codeigniter')
 
 
 DEFAULTS = utils.FormattedDict({
-    'CODEIGNITER_VERSION': '3.1.3',
+    'CODEIGNITER_VERSION': '2.2.6',
     'CODEIGNITER_PACKAGE': '{CODEIGNITER_VERSION}-stable.zip',
-    'CODEIGNITER_HASH': 'd51c969431505ec75d70a5d79a22516ccc46202a',
+    'CODEIGNITER_HASH': 'c8e5385e7f9ed07082cfbcd70c2b05f6',
     'CODEIGNITER_URL': 'https://github.com/bcit-ci/CodeIgniter/archive/{CODEIGNITER_VERSION}.zip'
 })
 
