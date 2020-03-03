@@ -6,12 +6,7 @@ This is the [CodeIgniter Tutorial] application and it demonstrates push a CodeIg
 
 ### Usage
 
-1. Clone the app (i.e. this repo)
-
-  ```
-  git clone https://github.com/cloudfoundry-samples/cf-ex-code-igniter
-  cd cf-ex-code-igniter
-  ```
+1. Follow the instructions in the [CodeIgniter Tutorial] to get a working local application.
 
 1. If you don't have one already, create a MySQL service.  With Pivotal Web Services, the following command will create a free MySQL database through [ClearDb].
 
@@ -19,30 +14,63 @@ This is the [CodeIgniter Tutorial] application and it demonstrates push a CodeIg
   cf create-service cleardb spark mysql
   ```
 
+1. You can configure your database in two ways: using a `.env` file or in code.
+
+  To configure with a `.env` file, add a `.profile` script at the root of your application. You can then pull values out of `VCAP_SERVICES` and echo them into the `.env` file.
+
+  Ex:
+
+      ```bash
+      # replace `p.mysql` with the name of your db provider
+      # `[0]` picks the first bound db instance from this provider
+      cat <<EOF >> $HOME/.env
+      database.default.hostname = $(echo $VCAP_SERVICES | jq -r '.["p.mysql"][0].credentials.hostname')
+      database.default.username = $(echo $VCAP_SERVICES | jq -r '.["p.mysql"][0].credentials.username')
+      database.default.password = $(echo $VCAP_SERVICES | jq -r '.["p.mysql"][0].credentials.password')
+      database.default.database = $(echo $VCAP_SERVICES | jq -r '.["p.mysql"][0].credentials.name')
+      EOF
+      ``
+  
+  To configure in code, you can edit `app/Config/Database.php` and pull database configuration options from the env variable `VCAP_SERVICES`.
+
+  Ex:
+
+      ```php
+      // Look for bound MySQL Services, pick the first one
+      $services = json_decode(getenv('VCAP_SERVICES'), true);
+      $service = $services['<enter service type name>'][0];
+
+      public $default = [
+        'DSN'      => '',
+        'hostname' => $service['credentials']['hostname'],
+        'username' => $service['credentials']['username'],
+        'password' => $service['credentials']['password'],
+        'database' => $service['credentials']['name'],
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
+        'pConnect' => TRUE,
+        'DBDebug'  => TRUE,
+        'cacheOn'  => FALSE,
+        'cacheDir' => '',
+        'charset'  => 'utf8',
+        'DBCollat' => 'utf8_general_ci',
+        'swapPre'  => '',
+        'encrypt'  => FALSE,
+        'compress' => FALSE,
+        'strictOn' => FALSE,
+        'failover' => [],
+      ];
+      ```
+
 1. Push it to CloudFoundry.
 
   ```bash
   cf push
   ```
 
-  Access your application URL in the browser.  You should see the main page and be able to navigate the links.  The news section is pulled from the database.  Initially it'll be empty, but you can create some news entries with the create page.
-
-### Database Details
-
-Previously with this example, it was necessary to create the database manually.  Now this happens automatically when you push the application.  Here's how this works.
-
-1. The app is pushed & stages.
-1. Your MySQL service is bound to the app.
-1. The app droplet is run.
-1. The db migration scripts execute.
-1. The app itself starts.
-
-The migration scripts use the technique described [here](http://zacharyflower.com/2013/08/12/getting-started-with-codeigniter-migrations/).
+  Access your application URL in the browser. You should see the main page and be able to navigate the links.
 
 
-
-[CodeIgniter Tutorial]:http://ellislab.com/codeigniter/user-guide/tutorial/index.html
+[CodeIgniter Tutorial]:https://codeigniter4.github.io/userguide/tutorial/index.html
 [PHP Buildpack]:https://github.com/cloudfoundry/php-buildpack
 [ClearDb]:https://www.cleardb.com/
-[PHPMyAdmin]:https://github.com/cloudfoundry-samples/cf-ex-phpmyadmin
-[MySQL client]:http://dev.mysql.com/doc/refman/5.6/en/mysql.html

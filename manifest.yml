@@ -1,8 +1,0 @@
----
-applications:
-- name: cf-ex-code-igniter
-  memory: 128M
-  instances: 1
-  path: .
-  services:
-  - mysql
